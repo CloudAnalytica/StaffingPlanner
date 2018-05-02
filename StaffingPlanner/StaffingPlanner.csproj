@@ -187,6 +187,8 @@
     <Compile Include="Models\LostReason.cs">
       <DependentUpon>ClientOpportunitiesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\PartialClasses.cs" />
     <Compile Include="Models\Project.cs">
       <DependentUpon>ClientOpportunitiesModel.tt</DependentUpon>
     </Compile>

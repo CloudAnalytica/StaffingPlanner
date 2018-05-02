@@ -1,10 +1,10 @@
 ﻿@model StaffingPlanner.Models.LostReason
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "New Lost Reason";
 }
 
-<h2>Create</h2>
+<h2>Create A New Lost Reason</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>LostReason</h4>
+        <h4>LostReason Information</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

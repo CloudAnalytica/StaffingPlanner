@@ -18,6 +18,7 @@ namespace StaffingPlanner.Models
         public Project()
         {
             this.LostOpportunities = new HashSet<LostOpportunity>();
+            this.ProjectRoles = new HashSet<ProjectRole>();
         }
     
         public int projectId { get; set; }
@@ -36,6 +37,7 @@ namespace StaffingPlanner.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LostOpportunity> LostOpportunities { get; set; }
         public virtual ProjectStatus ProjectStatus { get; set; }
-        public virtual ProjectRole ProjectRole { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProjectRole> ProjectRoles { get; set; }
     }
 }
