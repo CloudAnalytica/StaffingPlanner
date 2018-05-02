@@ -1,0 +1,120 @@
+﻿@model StaffingPlanner.Models.ProjectRole
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ProjectRole</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.projectId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectRoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectRoleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maxTargetGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maxTargetGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.targetedNewHireGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.targetedNewHireGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.candidateConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.candidateConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expectedStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expectedStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actualStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actualStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.editDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultant.consultantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultant.consultantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.location)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

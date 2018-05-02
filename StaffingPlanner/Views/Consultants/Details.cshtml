@@ -1,0 +1,58 @@
+﻿@model StaffingPlanner.Models.Consultant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Consultant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.consultantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.consultantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sogetiStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sogetiStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activeEmployee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activeEmployee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.editDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.consultantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,114 @@
+﻿@model StaffingPlanner.Models.ProjectRole
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProjectRole</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.projectId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectRoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectRoleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maxTargetGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maxTargetGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.targetedNewHireGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.targetedNewHireGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.candidateConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.candidateConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expectedStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expectedStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actualStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actualStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.editDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultant.consultantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultant.consultantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.location)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.projectRoleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

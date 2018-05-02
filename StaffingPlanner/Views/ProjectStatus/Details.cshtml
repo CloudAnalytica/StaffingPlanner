@@ -1,0 +1,26 @@
+﻿@model StaffingPlanner.Models.ProjectStatus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProjectStatus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.projectStatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectStatusName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.projectStatusID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

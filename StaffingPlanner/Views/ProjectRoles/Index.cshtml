@@ -1,0 +1,99 @@
+﻿@model IEnumerable<StaffingPlanner.Models.ProjectRole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.projectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectRoleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.maxTargetGrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.targetedNewHireGrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.candidateConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.expectedStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actualStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.endDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastEditedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.editDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consultant.consultantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Project.location)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectRoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.maxTargetGrade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.targetedNewHireGrade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.candidateConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.expectedStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actualStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastEditedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.editDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consultant.consultantName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Project.location)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.projectRoleId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.projectRoleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.projectRoleId })
+        </td>
+    </tr>
+}
+
+</table>
