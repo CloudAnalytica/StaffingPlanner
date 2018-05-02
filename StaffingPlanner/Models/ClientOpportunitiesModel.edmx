@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ClientOpportunitiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ClientOpportunitiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="clientId" />
@@ -236,8 +236,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
             <End Role="UserInfo" EntitySet="UserInfo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClientOpportunitiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -290,7 +289,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <Property Name="editDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Project_Client" FromRole="Project" ToRole="Client" />
           <NavigationProperty Name="LostOpportunities" Relationship="Self.FK_LostOpportunity_Project" FromRole="Project" ToRole="LostOpportunity" />
-          <NavigationProperty Name="ProjectStatu" Relationship="Self.FK_Project_ProjectStatus" FromRole="Project" ToRole="ProjectStatus" />
+          <NavigationProperty Name="ProjectStatus" Relationship="Self.FK_Project_ProjectStatus" FromRole="Project" ToRole="ProjectStatus" />
           <NavigationProperty Name="ProjectRole" Relationship="Self.FK_ProjectRole_Project" FromRole="Project" ToRole="ProjectRole" />
         </EntityType>
         <EntityType Name="ProjectRole">
@@ -312,7 +311,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <NavigationProperty Name="Consultant" Relationship="Self.FK_ProjectRole_Consultant" FromRole="ProjectRole" ToRole="Consultant" />
           <NavigationProperty Name="Project" Relationship="Self.FK_ProjectRole_Project" FromRole="ProjectRole" ToRole="Project" />
         </EntityType>
-        <EntityType Name="ProjectStatu">
+        <EntityType Name="ProjectStatus">
           <Key>
             <PropertyRef Name="projectStatusID" />
           </Key>
@@ -403,7 +402,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Project_ProjectStatus">
-          <End Role="ProjectStatus" Type="Self.ProjectStatu" Multiplicity="1" />
+          <End Role="ProjectStatus" Type="ClientOpportunitiesModel.ProjectStatus" Multiplicity="1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProjectStatus">
@@ -444,7 +443,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <EntitySet Name="LostReasons" EntityType="Self.LostReason" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="ProjectRoles" EntityType="Self.ProjectRole" />
-          <EntitySet Name="ProjectStatus" EntityType="Self.ProjectStatu" />
+          <EntitySet Name="ProjectStatus1" EntityType="ClientOpportunitiesModel.ProjectStatus" />
           <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
           <EntitySet Name="UserPrivileges" EntityType="Self.UserPrivilege" />
           <EntitySet Name="LostOpportunities" EntityType="Self.LostOpportunity" />
@@ -465,7 +464,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
             <End Role="LostOpportunity" EntitySet="LostOpportunities" />
           </AssociationSet>
           <AssociationSet Name="FK_Project_ProjectStatus" Association="Self.FK_Project_ProjectStatus">
-            <End Role="ProjectStatus" EntitySet="ProjectStatus" />
+            <End Role="ProjectStatus" EntitySet="ProjectStatus1" />
             <End Role="Project" EntitySet="Projects" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectRole_Project" Association="Self.FK_ProjectRole_Project">
@@ -550,8 +549,8 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProjectStatus">
-            <EntityTypeMapping TypeName="ClientOpportunitiesModel.ProjectStatu">
+          <EntitySetMapping Name="ProjectStatus1">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.ProjectStatus">
               <MappingFragment StoreEntitySet="ProjectStatus">
                 <ScalarProperty Name="projectStatusID" ColumnName="projectStatusID" />
                 <ScalarProperty Name="projectStatusName" ColumnName="projectStatusName" />

@@ -35,7 +35,7 @@ namespace StaffingPlanner.Models
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LostOpportunity> LostOpportunities { get; set; }
-        public virtual ProjectStatu ProjectStatu { get; set; }
+        public virtual ProjectStatus ProjectStatus { get; set; }
         public virtual ProjectRole ProjectRole { get; set; }
     }
 }

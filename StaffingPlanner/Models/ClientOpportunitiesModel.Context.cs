@@ -30,7 +30,7 @@ namespace StaffingPlanner.Models
         public virtual DbSet<LostReason> LostReasons { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<ProjectRole> ProjectRoles { get; set; }
-        public virtual DbSet<ProjectStatu> ProjectStatus { get; set; }
+        public virtual DbSet<ProjectStatus> ProjectStatus1 { get; set; }
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
         public virtual DbSet<UserPrivilege> UserPrivileges { get; set; }
         public virtual DbSet<LostOpportunity> LostOpportunities { get; set; }

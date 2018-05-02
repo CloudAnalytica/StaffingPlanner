@@ -187,7 +187,7 @@
     <Compile Include="Models\ProjectRole.cs">
       <DependentUpon>ClientOpportunitiesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProjectStatu.cs">
+    <Compile Include="Models\ProjectStatus.cs">
       <DependentUpon>ClientOpportunitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserInfo.cs">
