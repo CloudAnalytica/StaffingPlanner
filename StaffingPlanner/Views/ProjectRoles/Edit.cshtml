@@ -1,10 +1,10 @@
 ﻿@model StaffingPlanner.Models.ProjectRole
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Role";
 }
 
-<h2>Edit</h2>
+<h2>Edit A Role</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ProjectRole</h4>
+        <h4>Role Information</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.projectRoleId)

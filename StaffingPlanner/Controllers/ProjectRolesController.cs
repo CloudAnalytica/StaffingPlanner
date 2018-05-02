@@ -40,7 +40,7 @@ namespace StaffingPlanner.Controllers
         public ActionResult Create()
         {
             ViewBag.consultantId = new SelectList(db.Consultants, "consultantId", "consultantName");
-            ViewBag.projectRoleId = new SelectList(db.Projects, "projectId", "location");
+            ViewBag.projectId = new SelectList(db.Projects, "projectId", "location");
             return View();
         }
 
