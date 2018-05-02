@@ -7,9 +7,8 @@
 <div class="Container">
     <h2>Report</h2>
 
-    <table class="table table-hover table-small table-responsive">
+    <table class="table table-striped table-hover table-small ">
         <tr>
-            <th>Details</th>
             <th>Status</th>
             <th>Client</th>
             <th>Role</th>
@@ -27,18 +26,12 @@
             <th>Confirmed Candidate Practice</th>
             <th>Comments</th>
             <th>Location</th>
-            <th>Sponser</th>
             <th>Client Name</th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    <button type="button" class="btn btn-light">
-                        +
-                    </button>
-                </td>
                 <td>To be Filled</td> <!--Status-->
                 <td>To be Filled</td> <!--Client-->
                 <td>@Html.DisplayFor(modelItem => item.ProjectRole.projectRoleName)</td> <!--Role-->
