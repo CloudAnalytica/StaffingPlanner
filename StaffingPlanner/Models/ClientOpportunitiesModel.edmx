@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ClientOpportunitiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="clientId" />
+          </Key>
+          <Property Name="clientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="subbusiness" Type="varchar" MaxLength="50" />
+          <Property Name="activeClient" Type="bit" Nullable="false" />
+          <Property Name="lastEditedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="editDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consultant">
+          <Key>
+            <PropertyRef Name="consultantId" />
+          </Key>
+          <Property Name="consultantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="consultantName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sogetiStartDate" Type="date" />
+          <Property Name="activeEmployee" Type="bit" Nullable="false" />
+          <Property Name="lastEditedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="editDate" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LostOpportunity">
+          <Key>
+            <PropertyRef Name="projectId" />
+            <PropertyRef Name="lostReasonId" />
+            <PropertyRef Name="lastEditedBy" />
+            <PropertyRef Name="editDate" />
+          </Key>
+          <Property Name="projectId" Type="int" Nullable="false" />
+          <Property Name="lostReasonId" Type="int" Nullable="false" />
+          <Property Name="lastEditedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="editDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LostReason">
+          <Key>
+            <PropertyRef Name="lostReasonId" />
+          </Key>
+          <Property Name="lostReasonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reason" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="projectId" />
+          </Key>
+          <Property Name="projectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientId" Type="int" Nullable="false" />
+          <Property Name="projectStatusID" Type="int" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sponsor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="requestDate" Type="date" Nullable="false" />
+          <Property Name="projectName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="projectActive" Type="bit" Nullable="false" />
+          <Property Name="comment" Type="varchar(max)" />
+          <Property Name="lastEditedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="editDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectRole">
+          <Key>
+            <PropertyRef Name="projectRoleId" />
+          </Key>
+          <Property Name="projectRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projectId" Type="int" Nullable="false" />
+          <Property Name="consultantId" Type="int" />
+          <Property Name="projectRoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="maxTargetGrade" Type="varchar" MaxLength="50" />
+          <Property Name="targetedNewHireGrade" Type="varchar" MaxLength="50" />
+          <Property Name="candidateConfirmed" Type="bit" />
+          <Property Name="expectedStartDate" Type="date" />
+          <Property Name="actualStartDate" Type="date" />
+          <Property Name="endDate" Type="date" />
+          <Property Name="lastEditedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="editDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectStatus">
+          <Key>
+            <PropertyRef Name="projectStatusID" />
+          </Key>
+          <Property Name="projectStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projectStatusName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserPrivilegeId" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPrivilege">
+          <Key>
+            <PropertyRef Name="UserPrivilegeId" />
+          </Key>
+          <Property Name="UserPrivilegeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserPrivilegeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_LostOpportunity_LostReason">
+          <End Role="LostReason" Type="Self.LostReason" Multiplicity="1" />
+          <End Role="LostOpportunity" Type="Self.LostOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LostReason">
+              <PropertyRef Name="lostReasonId" />
+            </Principal>
+            <Dependent Role="LostOpportunity">
+              <PropertyRef Name="lostReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LostOpportunity_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="LostOpportunity" Type="Self.LostOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="projectId" />
+            </Principal>
+            <Dependent Role="LostOpportunity">
+              <PropertyRef Name="projectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="clientId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="clientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_ProjectStatus">
+          <End Role="ProjectStatus" Type="Self.ProjectStatus" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectStatus">
+              <PropertyRef Name="projectStatusID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="projectStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectRole_Consultant">
+          <End Role="Consultant" Type="Self.Consultant" Multiplicity="0..1" />
+          <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultant">
+              <PropertyRef Name="consultantId" />
+            </Principal>
+            <Dependent Role="ProjectRole">
+              <PropertyRef Name="consultantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectRole_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="projectId" />
+            </Principal>
+            <Dependent Role="ProjectRole">
+              <PropertyRef Name="projectRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserPrivilege">
+          <End Role="UserPrivilege" Type="Self.UserPrivilege" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPrivilege">
+              <PropertyRef Name="UserPrivilegeId" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserPrivilegeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClientOpportunitiesModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consultant" EntityType="Self.Consultant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LostReason" EntityType="Self.LostReason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectRole" EntityType="Self.ProjectRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectStatus" EntityType="Self.ProjectStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPrivilege" EntityType="Self.UserPrivilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LostOpportunity" EntityType="Self.LostOpportunity" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LostOpportunity].[projectId] AS [projectId], 
+    [LostOpportunity].[lostReasonId] AS [lostReasonId], 
+    [LostOpportunity].[lastEditedBy] AS [lastEditedBy], 
+    [LostOpportunity].[editDate] AS [editDate]
+    FROM [dbo].[LostOpportunity] AS [LostOpportunity]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_LostOpportunity_LostReason" Association="Self.FK_LostOpportunity_LostReason">
+            <End Role="LostReason" EntitySet="LostReason" />
+            <End Role="LostOpportunity" EntitySet="LostOpportunity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LostOpportunity_Project" Association="Self.FK_LostOpportunity_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="LostOpportunity" EntitySet="LostOpportunity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Client" Association="Self.FK_Project_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_ProjectStatus" Association="Self.FK_Project_ProjectStatus">
+            <End Role="ProjectStatus" EntitySet="ProjectStatus" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectRole_Consultant" Association="Self.FK_ProjectRole_Consultant">
+            <End Role="Consultant" EntitySet="Consultant" />
+            <End Role="ProjectRole" EntitySet="ProjectRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectRole_Project" Association="Self.FK_ProjectRole_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectRole" EntitySet="ProjectRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserPrivilege" Association="Self.FK_UserInfo_UserPrivilege">
+            <End Role="UserPrivilege" EntitySet="UserPrivilege" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClientOpportunitiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="clientId" />
+          </Key>
+          <Property Name="clientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subbusiness" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activeClient" Type="Boolean" Nullable="false" />
+          <Property Name="lastEditedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="editDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_Project_Client" FromRole="Client" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="Consultant">
+          <Key>
+            <PropertyRef Name="consultantId" />
+          </Key>
+          <Property Name="consultantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="consultantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sogetiStartDate" Type="DateTime" Precision="0" />
+          <Property Name="activeEmployee" Type="Boolean" Nullable="false" />
+          <Property Name="lastEditedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="editDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ProjectRoles" Relationship="Self.FK_ProjectRole_Consultant" FromRole="Consultant" ToRole="ProjectRole" />
+        </EntityType>
+        <EntityType Name="LostReason">
+          <Key>
+            <PropertyRef Name="lostReasonId" />
+          </Key>
+          <Property Name="lostReasonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LostOpportunities" Relationship="Self.FK_LostOpportunity_LostReason" FromRole="LostReason" ToRole="LostOpportunity" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="projectId" />
+          </Key>
+          <Property Name="projectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientId" Type="Int32" Nullable="false" />
+          <Property Name="projectStatusID" Type="Int32" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sponsor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="requestDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="projectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="projectActive" Type="Boolean" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lastEditedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="editDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Project_Client" FromRole="Project" ToRole="Client" />
+          <NavigationProperty Name="LostOpportunities" Relationship="Self.FK_LostOpportunity_Project" FromRole="Project" ToRole="LostOpportunity" />
+          <NavigationProperty Name="ProjectStatu" Relationship="Self.FK_Project_ProjectStatus" FromRole="Project" ToRole="ProjectStatus" />
+          <NavigationProperty Name="ProjectRole" Relationship="Self.FK_ProjectRole_Project" FromRole="Project" ToRole="ProjectRole" />
+        </EntityType>
+        <EntityType Name="ProjectRole">
+          <Key>
+            <PropertyRef Name="projectRoleId" />
+          </Key>
+          <Property Name="projectRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projectId" Type="Int32" Nullable="false" />
+          <Property Name="consultantId" Type="Int32" />
+          <Property Name="projectRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="maxTargetGrade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="targetedNewHireGrade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="candidateConfirmed" Type="Boolean" />
+          <Property Name="expectedStartDate" Type="DateTime" Precision="0" />
+          <Property Name="actualStartDate" Type="DateTime" Precision="0" />
+          <Property Name="endDate" Type="DateTime" Precision="0" />
+          <Property Name="lastEditedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="editDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Consultant" Relationship="Self.FK_ProjectRole_Consultant" FromRole="ProjectRole" ToRole="Consultant" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectRole_Project" FromRole="ProjectRole" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="ProjectStatu">
+          <Key>
+            <PropertyRef Name="projectStatusID" />
+          </Key>
+          <Property Name="projectStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projectStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_Project_ProjectStatus" FromRole="ProjectStatus" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserPrivilegeId" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserPrivilege" Relationship="Self.FK_UserInfo_UserPrivilege" FromRole="UserInfo" ToRole="UserPrivilege" />
+        </EntityType>
+        <EntityType Name="UserPrivilege">
+          <Key>
+            <PropertyRef Name="UserPrivilegeId" />
+          </Key>
+          <Property Name="UserPrivilegeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserPrivilegeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserInfoes" Relationship="Self.FK_UserInfo_UserPrivilege" FromRole="UserPrivilege" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="LostOpportunity">
+          <Key>
+            <PropertyRef Name="projectId" />
+            <PropertyRef Name="lostReasonId" />
+            <PropertyRef Name="lastEditedBy" />
+            <PropertyRef Name="editDate" />
+          </Key>
+          <Property Name="projectId" Type="Int32" Nullable="false" />
+          <Property Name="lostReasonId" Type="Int32" Nullable="false" />
+          <Property Name="lastEditedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="editDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="LostReason" Relationship="Self.FK_LostOpportunity_LostReason" FromRole="LostOpportunity" ToRole="LostReason" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_LostOpportunity_Project" FromRole="LostOpportunity" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_Project_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="clientId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="clientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectRole_Consultant">
+          <End Role="Consultant" Type="Self.Consultant" Multiplicity="0..1" />
+          <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultant">
+              <PropertyRef Name="consultantId" />
+            </Principal>
+            <Dependent Role="ProjectRole">
+              <PropertyRef Name="consultantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LostOpportunity_LostReason">
+          <End Role="LostReason" Type="Self.LostReason" Multiplicity="1" />
+          <End Role="LostOpportunity" Type="Self.LostOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LostReason">
+              <PropertyRef Name="lostReasonId" />
+            </Principal>
+            <Dependent Role="LostOpportunity">
+              <PropertyRef Name="lostReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LostOpportunity_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="LostOpportunity" Type="Self.LostOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="projectId" />
+            </Principal>
+            <Dependent Role="LostOpportunity">
+              <PropertyRef Name="projectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_ProjectStatus">
+          <End Role="ProjectStatus" Type="Self.ProjectStatu" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectStatus">
+              <PropertyRef Name="projectStatusID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="projectStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectRole_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="projectId" />
+            </Principal>
+            <Dependent Role="ProjectRole">
+              <PropertyRef Name="projectRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserPrivilege">
+          <End Role="UserPrivilege" Type="Self.UserPrivilege" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPrivilege">
+              <PropertyRef Name="UserPrivilegeId" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserPrivilegeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClientOpportunitiesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Consultants" EntityType="Self.Consultant" />
+          <EntitySet Name="LostReasons" EntityType="Self.LostReason" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="ProjectRoles" EntityType="Self.ProjectRole" />
+          <EntitySet Name="ProjectStatus" EntityType="Self.ProjectStatu" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+          <EntitySet Name="UserPrivileges" EntityType="Self.UserPrivilege" />
+          <EntitySet Name="LostOpportunities" EntityType="Self.LostOpportunity" />
+          <AssociationSet Name="FK_Project_Client" Association="Self.FK_Project_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectRole_Consultant" Association="Self.FK_ProjectRole_Consultant">
+            <End Role="Consultant" EntitySet="Consultants" />
+            <End Role="ProjectRole" EntitySet="ProjectRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LostOpportunity_LostReason" Association="Self.FK_LostOpportunity_LostReason">
+            <End Role="LostReason" EntitySet="LostReasons" />
+            <End Role="LostOpportunity" EntitySet="LostOpportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LostOpportunity_Project" Association="Self.FK_LostOpportunity_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="LostOpportunity" EntitySet="LostOpportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_ProjectStatus" Association="Self.FK_Project_ProjectStatus">
+            <End Role="ProjectStatus" EntitySet="ProjectStatus" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectRole_Project" Association="Self.FK_ProjectRole_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectRole" EntitySet="ProjectRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserPrivilege" Association="Self.FK_UserInfo_UserPrivilege">
+            <End Role="UserPrivilege" EntitySet="UserPrivileges" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClientOpportunitiesModelStoreContainer" CdmEntityContainer="ClientOpportunitiesEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+                <ScalarProperty Name="clientName" ColumnName="clientName" />
+                <ScalarProperty Name="subbusiness" ColumnName="subbusiness" />
+                <ScalarProperty Name="activeClient" ColumnName="activeClient" />
+                <ScalarProperty Name="lastEditedBy" ColumnName="lastEditedBy" />
+                <ScalarProperty Name="editDate" ColumnName="editDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consultants">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.Consultant">
+              <MappingFragment StoreEntitySet="Consultant">
+                <ScalarProperty Name="consultantId" ColumnName="consultantId" />
+                <ScalarProperty Name="consultantName" ColumnName="consultantName" />
+                <ScalarProperty Name="sogetiStartDate" ColumnName="sogetiStartDate" />
+                <ScalarProperty Name="activeEmployee" ColumnName="activeEmployee" />
+                <ScalarProperty Name="lastEditedBy" ColumnName="lastEditedBy" />
+                <ScalarProperty Name="editDate" ColumnName="editDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LostReasons">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.LostReason">
+              <MappingFragment StoreEntitySet="LostReason">
+                <ScalarProperty Name="lostReasonId" ColumnName="lostReasonId" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="projectId" ColumnName="projectId" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+                <ScalarProperty Name="projectStatusID" ColumnName="projectStatusID" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="sponsor" ColumnName="sponsor" />
+                <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+                <ScalarProperty Name="projectName" ColumnName="projectName" />
+                <ScalarProperty Name="projectActive" ColumnName="projectActive" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="lastEditedBy" ColumnName="lastEditedBy" />
+                <ScalarProperty Name="editDate" ColumnName="editDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectRoles">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.ProjectRole">
+              <MappingFragment StoreEntitySet="ProjectRole">
+                <ScalarProperty Name="projectRoleId" ColumnName="projectRoleId" />
+                <ScalarProperty Name="projectId" ColumnName="projectId" />
+                <ScalarProperty Name="consultantId" ColumnName="consultantId" />
+                <ScalarProperty Name="projectRoleName" ColumnName="projectRoleName" />
+                <ScalarProperty Name="maxTargetGrade" ColumnName="maxTargetGrade" />
+                <ScalarProperty Name="targetedNewHireGrade" ColumnName="targetedNewHireGrade" />
+                <ScalarProperty Name="candidateConfirmed" ColumnName="candidateConfirmed" />
+                <ScalarProperty Name="expectedStartDate" ColumnName="expectedStartDate" />
+                <ScalarProperty Name="actualStartDate" ColumnName="actualStartDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="lastEditedBy" ColumnName="lastEditedBy" />
+                <ScalarProperty Name="editDate" ColumnName="editDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectStatus">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.ProjectStatu">
+              <MappingFragment StoreEntitySet="ProjectStatus">
+                <ScalarProperty Name="projectStatusID" ColumnName="projectStatusID" />
+                <ScalarProperty Name="projectStatusName" ColumnName="projectStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="UserPrivilegeId" ColumnName="UserPrivilegeId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPrivileges">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.UserPrivilege">
+              <MappingFragment StoreEntitySet="UserPrivilege">
+                <ScalarProperty Name="UserPrivilegeId" ColumnName="UserPrivilegeId" />
+                <ScalarProperty Name="UserPrivilegeName" ColumnName="UserPrivilegeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LostOpportunities">
+            <EntityTypeMapping TypeName="ClientOpportunitiesModel.LostOpportunity">
+              <MappingFragment StoreEntitySet="LostOpportunity">
+                <ScalarProperty Name="projectId" ColumnName="projectId" />
+                <ScalarProperty Name="lostReasonId" ColumnName="lostReasonId" />
+                <ScalarProperty Name="lastEditedBy" ColumnName="lastEditedBy" />
+                <ScalarProperty Name="editDate" ColumnName="editDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

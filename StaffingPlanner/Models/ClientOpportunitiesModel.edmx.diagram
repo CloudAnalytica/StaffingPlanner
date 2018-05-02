@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b5b9f9ff1d9499aba85f5619fb9fdc5" Name="Diagram1">
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.Client" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.Consultant" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.LostReason" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.Project" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.ProjectRole" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.ProjectStatu" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.UserInfo" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.UserPrivilege" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientOpportunitiesModel.LostOpportunity" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_Project_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_ProjectRole_Consultant" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_LostOpportunity_LostReason" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_LostOpportunity_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_Project_ProjectStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_ProjectRole_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_UserInfo_UserPrivilege" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
