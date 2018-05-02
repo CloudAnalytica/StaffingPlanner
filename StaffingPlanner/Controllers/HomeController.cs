@@ -23,7 +23,7 @@ namespace StaffingPlanner.Controllers
         // GET: Projects
         public ActionResult Report()
         {
-            var projects = db.Projects.Include(p => p.Client).Include(p => p.ProjectStatus).Include(p => p.ProjectRole);
+            var projects = db.Projects.Include(p => p.Client);
             return View(projects.ToList());
         }
     }
