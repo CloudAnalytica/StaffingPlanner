@@ -6,14 +6,10 @@ using System.Web.Mvc;
 
 namespace StaffingPlanner.Controllers
 {
-    public class HomeController : Controller
+    public class ReportController : Controller
     {
+        // GET: Report
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Report()
         {
             return View();
         }

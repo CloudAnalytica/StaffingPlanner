@@ -286,6 +286,7 @@
     <Content Include="Views\ProjectRoles\Details.cshtml" />
     <Content Include="Views\ProjectRoles\Edit.cshtml" />
     <Content Include="Views\ProjectRoles\Index.cshtml" />
+    <Content Include="Views\Home\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
