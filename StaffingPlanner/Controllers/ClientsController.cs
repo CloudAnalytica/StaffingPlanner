@@ -73,10 +73,10 @@ namespace StaffingPlanner.Controllers
             return View(client);
         }
 
-        // POST: Clients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+		// POST: Clients/Edit/5
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "clientId,clientName,subbusiness,activeClient,lastEditedBy,editDate")] Client client)
         {
@@ -115,7 +115,35 @@ namespace StaffingPlanner.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+		// GET: Clients/MakeInactive/5
+		public ActionResult MakeInactive(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Client client = db.Clients.Find(id);
+			if (client == null)
+			{
+				return HttpNotFound();
+			}
+			return View(client);
+		}
+
+		// POST: Clients/MakeInactive/5
+		[HttpPost, ActionName("MakeInactive")]
+		[ValidateAntiForgeryToken]
+		public ActionResult MakeInactiveConfirmed(int id)
+		{
+			Client client = db.Clients.Find(id);
+			client.activeClient = false;
+			db.Entry(client).State = EntityState.Modified;;
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
