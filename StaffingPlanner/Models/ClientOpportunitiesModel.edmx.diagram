@@ -21,6 +21,7 @@
         <AssociationConnector Association="ClientOpportunitiesModel.FK_Project_ProjectStatus" ManuallyRouted="false" />
         <AssociationConnector Association="ClientOpportunitiesModel.FK_ProjectRole_Project" ManuallyRouted="false" />
         <AssociationConnector Association="ClientOpportunitiesModel.FK_UserInfo_UserPrivilege" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientOpportunitiesModel.FK_ProjectRole_Project1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

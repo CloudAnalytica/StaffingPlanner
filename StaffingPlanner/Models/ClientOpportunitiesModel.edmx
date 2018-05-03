@@ -98,6 +98,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserPrivilege">
           <Key>
@@ -168,13 +169,13 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
         </Association>
         <Association Name="FK_ProjectRole_Project">
           <End Role="Project" Type="Self.Project" Multiplicity="1" />
-          <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="0..1" />
+          <End Role="ProjectRole" Type="Self.ProjectRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="projectId" />
             </Principal>
             <Dependent Role="ProjectRole">
-              <PropertyRef Name="projectRoleId" />
+              <PropertyRef Name="projectId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -291,6 +292,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <NavigationProperty Name="LostOpportunities" Relationship="Self.FK_LostOpportunity_Project" FromRole="Project" ToRole="LostOpportunity" />
           <NavigationProperty Name="ProjectStatus" Relationship="Self.FK_Project_ProjectStatus" FromRole="Project" ToRole="ProjectStatus" />
           <NavigationProperty Name="ProjectRole" Relationship="Self.FK_ProjectRole_Project" FromRole="Project" ToRole="ProjectRole" />
+          <NavigationProperty Name="ProjectRoles" Relationship="ClientOpportunitiesModel.FK_ProjectRole_Project1" FromRole="Project" ToRole="ProjectRole" />
         </EntityType>
         <EntityType Name="ProjectRole">
           <Key>
@@ -310,6 +312,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <Property Name="editDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Consultant" Relationship="Self.FK_ProjectRole_Consultant" FromRole="ProjectRole" ToRole="Consultant" />
           <NavigationProperty Name="Project" Relationship="Self.FK_ProjectRole_Project" FromRole="ProjectRole" ToRole="Project" />
+          <NavigationProperty Name="Project1" Relationship="ClientOpportunitiesModel.FK_ProjectRole_Project1" FromRole="ProjectRole" ToRole="Project" />
         </EntityType>
         <EntityType Name="ProjectStatus">
           <Key>
@@ -330,6 +333,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="UserPrivilege" Relationship="Self.FK_UserInfo_UserPrivilege" FromRole="UserInfo" ToRole="UserPrivilege" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserPrivilege">
           <Key>
@@ -475,7 +479,23 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
             <End Role="UserPrivilege" EntitySet="UserPrivileges" />
             <End Role="UserInfo" EntitySet="UserInfoes" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProjectRole_Project1" Association="ClientOpportunitiesModel.FK_ProjectRole_Project1">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectRole" EntitySet="ProjectRoles" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_ProjectRole_Project1">
+          <End Type="ClientOpportunitiesModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ClientOpportunitiesModel.ProjectRole" Role="ProjectRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="projectId" />
+            </Principal>
+            <Dependent Role="ProjectRole">
+              <PropertyRef Name="projectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -560,6 +580,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <EntitySetMapping Name="UserInfoes">
             <EntityTypeMapping TypeName="ClientOpportunitiesModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="UserPrivilegeId" ColumnName="UserPrivilegeId" />
                 <ScalarProperty Name="username" ColumnName="username" />
