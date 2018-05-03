@@ -19,16 +19,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Staffing Planner", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
-                    <li>@Html.ActionLink("Consultants", "Index", "Consultants")</li>
-                    <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
-                    <li>@Html.ActionLink("Project Roles", "Index", "ProjectRoles")</li>
-                    <li>@Html.ActionLink("Report", "Report", "Home")</li>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>@Html.ActionLink("Client", "Index", "Clients")</li>
+                    <li>@Html.ActionLink("Project", "Index", "Projects")</li>
+                    <li>@Html.ActionLink("Opportunity", "Create", "Projects")</li>
+                    <li>@Html.ActionLink("Reports", "Report", "Home")</li>
+                    <li>
+                        <a href="@Url.Action("Index", "UserInfoes")">
+                            <span>
+                                <i class="far fa-user"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Login", "UserInfoes")">
+                            <span><i class="fas fa-sign-in-alt"></i> </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
