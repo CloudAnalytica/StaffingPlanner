@@ -291,6 +291,7 @@
     <Content Include="Views\ProjectRoles\Edit.cshtml" />
     <Content Include="Views\ProjectRoles\Index.cshtml" />
     <Content Include="Views\Clients\MakeInactive.cshtml" />
+    <Content Include="Views\Consultants\MakeInactive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
