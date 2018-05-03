@@ -89,8 +89,35 @@ namespace StaffingPlanner.Controllers
             return View(consultant);
         }
 
-        // GET: Consultants/Delete/5
-        public ActionResult Delete(int? id)
+		// GET: Consultants/Delete/5
+		public ActionResult MakeInactive(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Consultant consultant = db.Consultants.Find(id);
+			if (consultant == null)
+			{
+				return HttpNotFound();
+			}
+			return View(consultant);
+		}
+
+		// POST: Consultants/Delete/5
+		[HttpPost, ActionName("MakeInactive")]
+		[ValidateAntiForgeryToken]
+		public ActionResult MakeInactiveConfirmed(int id)
+		{
+			Consultant consultant = db.Consultants.Find(id);
+			consultant.activeEmployee = false;
+			db.Entry(consultant).State = EntityState.Modified; ;
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+		// GET: Consultants/Delete/5
+		public ActionResult Delete(int? id)
         {
             if (id == null)
             {
