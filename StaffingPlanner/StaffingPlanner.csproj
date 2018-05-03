@@ -292,6 +292,7 @@
     <Content Include="Views\ProjectRoles\Index.cshtml" />
     <Content Include="Views\Clients\MakeInactive.cshtml" />
     <Content Include="Views\Consultants\MakeInactive.cshtml" />
+    <Content Include="Views\Projects\MakeInactive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

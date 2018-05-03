@@ -1,0 +1,104 @@
+﻿@model StaffingPlanner.Models.Project
+
+@{
+    ViewBag.Title = "Make Inactive";
+}
+
+<h2>Make Project Inactive</h2>
+
+<h3>Are you sure you want to make this project inactive?</h3>
+<div>
+    <h4>Project Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sponsor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sponsor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.requestDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.requestDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.editDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.clientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.clientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectStatus.projectStatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectStatus.projectStatusName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Make Inactive" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
