@@ -1,57 +1,61 @@
 ﻿@model IEnumerable<StaffingPlanner.Models.Consultant>
 
 @{
-    ViewBag.Title = "Consultant List";
+	ViewBag.Title = "Consultant List";
 }
 
 <h2>Consultant List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.consultantName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sogetiStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.activeEmployee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lastEditedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.editDate)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.consultantName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.sogetiStartDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.activeEmployee)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.lastEditedBy)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.editDate)
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.consultantName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sogetiStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.activeEmployee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastEditedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.editDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.consultantId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.consultantId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.consultantId })
-        </td>
-    </tr>
-}
+	@foreach (var item in Model)
+	{
+		if (item.activeEmployee)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.consultantName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.sogetiStartDate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.activeEmployee)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.lastEditedBy)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.editDate)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id = item.consultantId }) |
+					@Html.ActionLink("Details", "Details", new { id = item.consultantId }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.consultantId })
+				</td>
+			</tr>
+		}
+	}
 
 </table>
