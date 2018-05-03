@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\zbaker\OneDrive - Sogeti USA\Code\StaffingPlanner\StaffingPlanner\Models\ClientOpportunitiesModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\daning\Desktop\Staffing2\StaffingPlanner\Models\ClientOpportunitiesModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
