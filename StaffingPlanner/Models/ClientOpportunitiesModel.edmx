@@ -98,6 +98,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserPrivilege">
           <Key>
@@ -330,6 +331,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="UserPrivilege" Relationship="Self.FK_UserInfo_UserPrivilege" FromRole="UserInfo" ToRole="UserPrivilege" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserPrivilege">
           <Key>
@@ -560,6 +562,7 @@ warning 6002: The table/view 'ClientOpportunities.dbo.LostOpportunity' does not 
           <EntitySetMapping Name="UserInfoes">
             <EntityTypeMapping TypeName="ClientOpportunitiesModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="UserPrivilegeId" ColumnName="UserPrivilegeId" />
                 <ScalarProperty Name="username" ColumnName="username" />
