@@ -317,6 +317,9 @@
     <Content Include="Views\ProjectRoles\Details.cshtml" />
     <Content Include="Views\ProjectRoles\Edit.cshtml" />
     <Content Include="Views\ProjectRoles\Index.cshtml" />
+	   <Content Include="Views\Clients\MakeInactive.cshtml" />
+    <Content Include="Views\Consultants\MakeInactive.cshtml" />
+    <Content Include="Views\Projects\MakeInactive.cshtml" />
 	<Content Include="Views\Home\Report.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -327,10 +330,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-	 <Content Include="Views\Clients\MakeInactive.cshtml" />
-    <Content Include="Views\Consultants\MakeInactive.cshtml" />
-    <Content Include="Views\Projects\MakeInactive.cshtml" />
-	</ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
