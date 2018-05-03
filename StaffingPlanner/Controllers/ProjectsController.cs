@@ -102,8 +102,35 @@ namespace StaffingPlanner.Controllers
             return View(project);
         }
 
-        // GET: Projects/Delete/5
-        public ActionResult Delete(int? id)
+		// GET: Projects/MakeInactive/5
+		public ActionResult MakeInactive(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Project project = db.Projects.Find(id);
+			if (project == null)
+			{
+				return HttpNotFound();
+			}
+			return View(project);
+		}
+
+		// POST: Projects/MakeInactive/5
+		[HttpPost, ActionName("MakeInactive")]
+		[ValidateAntiForgeryToken]
+		public ActionResult MakeInactiveConfirmed(int id)
+		{
+			Project project = db.Projects.Find(id);
+			project.projectActive = false;
+			db.Entry(project).State = EntityState.Modified;
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+		// GET: Projects/Delete/5
+		public ActionResult Delete(int? id)
         {
             if (id == null)
             {
