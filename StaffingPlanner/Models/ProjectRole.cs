@@ -29,6 +29,5 @@ namespace StaffingPlanner.Models
     
         public virtual Consultant Consultant { get; set; }
         public virtual Project Project { get; set; }
-        public virtual Project Project1 { get; set; }
     }
 }
