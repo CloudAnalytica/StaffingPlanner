@@ -33,33 +33,33 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
-                        <i class="fas fa-user-plus"></i>
-                    </button>
- 
-                </td>
-                <td>To be Filled</td> <!--Status-->
-                <td>To be Filled</td> <!--Client-->
-                <td>@Html.DisplayFor(modelItem => item.ProjectRole.projectRoleName)</td> <!--Role-->
-                <td>@Html.DisplayFor(modelItem => item.projectName)</td><!--Team-->
-                <td>To be Filled</td> <!--Client--><!--Max Targeted Grade-->
-                <td>To be Filled</td> <!--Client--><!--Targeted Sogeti Consultant-->
-                <td>To be Filled</td> <!--Client--><!--Targeted New Hire (Grade/Recruiter)-->
-                <td>To be Filled</td> <!--Client--><!--Candidate Confirmed-->
-                <td>To be Filled</td> <!--Client--><!--Change Request Date-->
-                <td>To be Filled</td> <!--Client--><!--Expected Start Date w/ Client-->
-                <td>To be Filled</td> <!--Client--><!--Expected start date w/ Sogeti (if applicable)-->
-                <td>@Html.DisplayFor(modelItem => item.requestDate)</td><!--Requested Date-->
-                <td>To be Filled</td> <!--Client--><!--Actual Start Date-->
-                <td>To be Filled</td> <!--Client--><!--Candidate's Info to Client-->
-                <td>To be Filled</td> <!--Client--><!--Confirmed Candidate Practice-->
-                <td>@Html.DisplayFor(modelItem => item.comment)</td><!--Comments-->
-                <td>@Html.DisplayFor(modelItem => item.location)</td><!--Location-->
-                <td>@Html.DisplayFor(modelItem => item.sponsor)</td><!--Client Name-->
-                <td>@Html.DisplayFor(modelItem => item.Client.clientName)</td>
-            </tr>
+        <tr>
+            <td>
+                <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+
+            </td>
+            <td>To be Filled</td> <!--Status-->
+            <td>To be Filled</td> <!--Client-->
+            <td>To be Filled</td> <!--Client-->
+            <td>@Html.DisplayFor(modelItem => item.projectName)</td><!--Team-->
+            <td>To be Filled</td> <!--Client--><!--Max Targeted Grade-->
+            <td>To be Filled</td> <!--Client--><!--Targeted Sogeti Consultant-->
+            <td>To be Filled</td> <!--Client--><!--Targeted New Hire (Grade/Recruiter)-->
+            <td>To be Filled</td> <!--Client--><!--Candidate Confirmed-->
+            <td>To be Filled</td> <!--Client--><!--Change Request Date-->
+            <td>To be Filled</td> <!--Client--><!--Expected Start Date w/ Client-->
+            <td>To be Filled</td> <!--Client--><!--Expected start date w/ Sogeti (if applicable)-->
+            <td>@Html.DisplayFor(modelItem => item.requestDate)</td><!--Requested Date-->
+            <td>To be Filled</td> <!--Client--><!--Actual Start Date-->
+            <td>To be Filled</td> <!--Client--><!--Candidate's Info to Client-->
+            <td>To be Filled</td> <!--Client--><!--Confirmed Candidate Practice-->
+            <td>@Html.DisplayFor(modelItem => item.comment)</td><!--Comments-->
+            <td>@Html.DisplayFor(modelItem => item.location)</td><!--Location-->
+            <td>@Html.DisplayFor(modelItem => item.sponsor)</td><!--Client Name-->
+            <td>@Html.DisplayFor(modelItem => item.Client.clientName)</td>
+        </tr>
         }
 
     </table>
