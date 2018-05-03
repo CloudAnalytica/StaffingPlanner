@@ -6,6 +6,9 @@
     <title>@ViewBag.Title - Staffing Planner</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,15 +19,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Staffing Planner", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
-                    <li>@Html.ActionLink("Consultants", "Index", "Consultants")</li>
-                    <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
-                    <li>@Html.ActionLink("Project Roles", "Index", "ProjectRoles")</li>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>@Html.ActionLink("Client", "Index", "Clients")</li>
+                    <li>@Html.ActionLink("Project", "Index", "Projects")</li>
+                    <li>@Html.ActionLink("Opportunity", "Create", "Projects")</li>
+                    <li>@Html.ActionLink("Reports", "Report", "Home")</li>
+                    <li>
+                        <a href="@Url.Action("Index", "UserInfoes")">
+                            <span>
+                                <i class="far fa-user"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Login", "UserInfoes")">
+                            <span><i class="fas fa-sign-in-alt"></i> </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
