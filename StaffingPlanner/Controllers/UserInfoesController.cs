@@ -53,7 +53,7 @@ namespace StaffingPlanner.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userId,UserPrivilegeId,username,email,firstName,lastName")] UserInfo userInfo)
+        public ActionResult Create([Bind(Include = "userId,UserPrivilegeId,username,email,password,firstName,lastName")] UserInfo userInfo)
         {
             if (ModelState.IsValid)
             {
