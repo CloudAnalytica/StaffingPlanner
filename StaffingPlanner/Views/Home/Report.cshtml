@@ -2,65 +2,80 @@
 
 
 @{
-    ViewBag.Title = "Report";
+    ViewBag.Title = "Reports";
 }
 <div class="Container">
     <h2>Report</h2>
 
-    <table class="table table-small table-hover ">
+    <table class="table table-small table-hover table-striped ">
         <tr>
             <th>Details</th>
-            <th>Status</th>
-            <th>Client</th>
-            <th>Role</th>
-            <th>Team</th>
-            <th>Max Targeted Grade</th>
-            <th>Targeted Sogeti Consultant</th>
-            <th>Targeted New Hire (Grade/Recruiter)</th>
-            <th>Candidate Confirmed</th>
-            <th>Change Request Date</th>
-            <th>Expected Start Date w/ Client</th>
-            <th>Expected start date w/ Sogeti (if applicable)</th>
-            <th>Requested Date</th>
-            <th>Actual Start Date</th>
-            <th>Candidate's Info to Client</th>
-            <th>Confirmed Candidate Practice</th>
+            <th>Account</th>
+            <th>Sub-Business</th>
+            <th>Project Name</th>
+            <th>Project Value</th>
+            <th>Opportunity Type</th>
+            <th>Opportunity Status</th>
+            <th>Rate Card/hr</th>
+            <th>Skill Set Needed</th>
+            <th>Practice</th>
+            <th>Max Target Grade</th>
+            <th>Targeted Consultant</th>
+            <th>Work Location</th>
+            <th>Start Date</th>
+            <th>Duration</th>
+            <th>Priority</th>
             <th>Comments</th>
-            <th>Location</th>
-            <th>Sponsor</th>
-            <th>Client Name</th>
         </tr>
 
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
-                    <i class="fas fa-user-plus"></i>
-                </button>
-
-            </td>
-            <td>To be Filled</td> <!--Status-->
-            <td>To be Filled</td> <!--Client-->
-            <td>To be Filled</td> <!--Client-->
-            <td>@Html.DisplayFor(modelItem => item.projectName)</td><!--Team-->
-            <td>To be Filled</td> <!--Client--><!--Max Targeted Grade-->
-            <td>To be Filled</td> <!--Client--><!--Targeted Sogeti Consultant-->
-            <td>To be Filled</td> <!--Client--><!--Targeted New Hire (Grade/Recruiter)-->
-            <td>To be Filled</td> <!--Client--><!--Candidate Confirmed-->
-            <td>To be Filled</td> <!--Client--><!--Change Request Date-->
-            <td>To be Filled</td> <!--Client--><!--Expected Start Date w/ Client-->
-            <td>To be Filled</td> <!--Client--><!--Expected start date w/ Sogeti (if applicable)-->
-            <td>@Html.DisplayFor(modelItem => item.requestDate)</td><!--Requested Date-->
-            <td>To be Filled</td> <!--Client--><!--Actual Start Date-->
-            <td>To be Filled</td> <!--Client--><!--Candidate's Info to Client-->
-            <td>To be Filled</td> <!--Client--><!--Confirmed Candidate Practice-->
-            <td>@Html.DisplayFor(modelItem => item.comment)</td><!--Comments-->
-            <td>@Html.DisplayFor(modelItem => item.location)</td><!--Location-->
-            <td>@Html.DisplayFor(modelItem => item.sponsor)</td><!--Client Name-->
-            <td>@Html.DisplayFor(modelItem => item.Client.clientName)</td>
-        </tr>
-        }
+    <tr class="">
+        <td>
+            <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
+                <i class="fas fa-user-plus"></i>
+            </button>
+        </td>
+        <th>GE</th>
+        <th>Power</th>
+        <th>Alstorm</th>
+        <th>Pete Rogers</th>
+        <th>$2.5M</th>
+        <th>Fixed Delivery</th>
+        <th>Sold</th>
+        <th>N/A</th>
+        <th>Solution Architect</th>
+        <th>ACT</th>
+        <th>B</th>
+        <th>TBD</th>
+        <th>US-Remote</th>
+        <th>4/3/2018</th>
+        <th>12 months</th>
+        <th>High</th>
+        <th></th>
+    </tr>
+    <tr class="">
+        <td>
+            <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
+                <i class="fas fa-user-plus"></i>
+            </button>
+        </td>
+        <th>Kroger</th>
+        <th>Warehouse</th>
+        <th>Project Manager</th>
+        <th>Kevin Dulay</th>
+        <th>$1.2M</th>
+        <th>T&M</th>
+        <th>Pro-Active</th>
+        <th>$100</th>
+        <th>Scrum Master</th>
+        <th>ACT</th>
+        <th>B</th>
+        <th>TBD</th>
+        <th>US-Client Site</th>
+        <th>6/30/2018</th>
+        <th>6 months</th>
+        <th>High</th>
+        <th></th>
+    </tr>
 
     </table>
 
