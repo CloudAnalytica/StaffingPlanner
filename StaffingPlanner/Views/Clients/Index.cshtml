@@ -4,55 +4,58 @@
 	ViewBag.Title = "Client List";
 }
 
-<h2>Client List</h2>
+                      <div class="container">
+                          <h2>Client List</h2>
+                          <div class="table-responsive">
+                              <p>
+                                  @Html.ActionLink("Create New", "Create")
+                              </p>
+                              <table class="table table-condensed table-bordered">
+                                  <tr id="t">
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.clientName)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.subbusiness)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.activeClient)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.lastEditedBy)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.editDate)
+                                      </th>
+                                      <th></th>
+                                  </tr>
 
-<p>
-	@Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr id="t">
-        <th>
-            @Html.DisplayNameFor(model => model.clientName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.subbusiness)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.activeClient)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lastEditedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.editDate)
-        </th>
-        <th></th>
-    </tr>
+                                  @foreach (var item in Model)
+                                  {
+                                  if (item.activeClient)
+                                  {
+                                  <tr>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.clientName)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.subbusiness)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.lastEditedBy)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.editDate)
+                                      </td>
+                                      <td>
+                                          @Html.ActionLink("Edit", "Edit", new { id = item.clientId }) |
+                                          @Html.ActionLink("Details", "Details", new { id = item.clientId }) |
+                                          @Html.ActionLink("Make Inactive", "MakeInactive", new { id = item.clientId })
+                                      </td>
+                                  </tr>
+                                  }
+                                  }
 
-    @foreach (var item in Model)
-    {
-    if (item.activeClient)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.clientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.subbusiness)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastEditedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.editDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.clientId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.clientId }) |
-            @Html.ActionLink("Make Inactive", "MakeInactive", new { id = item.clientId })
-        </td>
-    </tr>
-    }
-    }
-
-</table>
+                              </table>
+                          </div>
+                      </div>
