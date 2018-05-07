@@ -3,31 +3,34 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
+    <h2>Index</h2>
+    <div class="table-responsive">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-condensed table-bordered">
+            <tr id="t">
+                <th>
+                    @Html.DisplayNameFor(model => model.projectStatusName)
+                </th>
+                <th></th>
+            </tr>
 
-<h2>Index</h2>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projectStatusName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.projectStatusID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.projectStatusID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.projectStatusID })
+                    </td>
+                </tr>
+            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr id="t">
-        <th>
-            @Html.DisplayNameFor(model => model.projectStatusName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.projectStatusName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.projectStatusID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.projectStatusID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.projectStatusID })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+</div>
