@@ -1,4 +1,9 @@
-﻿@model IEnumerable<StaffingPlanner.Models.Project>
+﻿
+
+@model IEnumerable<StaffingPlanner.Models.Project>
+
+
+
 
 
 @{
@@ -7,12 +12,13 @@
 <div class="Container">
     <h2>Report</h2>
 
-    <table class="table table-small table-hover table-striped ">
-        <tr>
+    <table class="table table-condensed table-bordered">
+        <tr id="t">
             <th>Details</th>
             <th>Account</th>
             <th>Sub-Business</th>
             <th>Project Name</th>
+            <th>Sponsor Name</th>
             <th>Project Value</th>
             <th>Opportunity Type</th>
             <th>Opportunity Status</th>
@@ -28,54 +34,33 @@
             <th>Comments</th>
         </tr>
 
-    <tr class="">
-        <td>
-            <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
-                <i class="fas fa-user-plus"></i>
-            </button>
-        </td>
-        <th>GE</th>
-        <th>Power</th>
-        <th>Alstorm</th>
-        <th>Pete Rogers</th>
-        <th>$2.5M</th>
-        <th>Fixed Delivery</th>
-        <th>Sold</th>
-        <th>N/A</th>
-        <th>Solution Architect</th>
-        <th>ACT</th>
-        <th>B</th>
-        <th>TBD</th>
-        <th>US-Remote</th>
-        <th>4/3/2018</th>
-        <th>12 months</th>
-        <th>High</th>
-        <th></th>
-    </tr>
-    <tr class="">
-        <td>
-            <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
-                <i class="fas fa-user-plus"></i>
-            </button>
-        </td>
-        <th>Kroger</th>
-        <th>Warehouse</th>
-        <th>Project Manager</th>
-        <th>Kevin Dulay</th>
-        <th>$1.2M</th>
-        <th>T&M</th>
-        <th>Pro-Active</th>
-        <th>$100</th>
-        <th>Scrum Master</th>
-        <th>ACT</th>
-        <th>B</th>
-        <th>TBD</th>
-        <th>US-Client Site</th>
-        <th>6/30/2018</th>
-        <th>6 months</th>
-        <th>High</th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+        <tr id="t2">
+            <td>
+                <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+            </td>                 <!--Details-->
+            <td>To be Filled</td> <!--Account-->
+            <td>To be Filled</td> <!--Sub-business-->
+            <td>@Html.DisplayFor(modelItem => item.projectName)</td> <!--Project Name-->
+            <td>@Html.DisplayFor(modelItem => item.sponsor)</td><!--Sponsor Name-->
+            <td>To be Filled</td> <!--Project Value-->
+            <td>To be Filled</td> <!--Opportunity Type-->
+            <td>@Html.DisplayFor(modelItem => item.ProjectStatus)</td> <!--Opportunity Status--->
+            <td>To be Filled</td> <!--Rate Card/hr-->
+            <td>To be Filled</td> <!--Skill Set Needed-->
+            <td>To be Filled</td> <!--Practice-->
+            <td></td> <!--Max Targeted Grade-->
+            <td></td><!--Targeted Consultant-->
+            <td>@Html.DisplayFor(modelItem => item.location)</td> <!--Work Location-->
+            <td>To be Filled</td> <!--Start Date-->
+            <td>To be Filled</td> <!--Duration-->
+            <td>@Html.DisplayFor(modelItem => item.comment)</td><!--Priority-->
+            <td>@Html.DisplayFor(modelItem => item.location)</td><!--Comments-->
+        </tr>
+        }
 
     </table>
 
@@ -83,23 +68,25 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </div>

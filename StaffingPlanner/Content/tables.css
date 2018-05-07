@@ -1,0 +1,15 @@
+﻿
+
+#t {
+    color: white;
+    background-color: #B31A02 !important;
+        
+}
+
+tr:nth-child(even){
+    background-color: #E3CBCB
+}
+
+tr:nth-child(odd) {
+    background-color: #F4E7E9
+}

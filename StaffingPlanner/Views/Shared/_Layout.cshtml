@@ -47,8 +47,10 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Sogeti</p>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">&copy; @DateTime.Now.Year - Sogeti</p>
+            </div>
         </footer>
     </div>
 
