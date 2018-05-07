@@ -39,9 +39,9 @@ namespace StaffingPlanner.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
-            ViewBag.clientId = new SelectList(db.Clients, "clientId", "clientName");
+
+			ViewBag.clientId = new SelectList(db.Clients, "clientId", "clientName" );
             ViewBag.projectStatusID = new SelectList(db.ProjectStatus1, "projectStatusID", "projectStatusName");
-            ViewBag.projectId = new SelectList(db.ProjectRoles, "projectRoleId", "projectRoleName");
             return View();
         }
 
@@ -61,7 +61,6 @@ namespace StaffingPlanner.Controllers
 
             ViewBag.clientId = new SelectList(db.Clients, "clientId", "clientName", project.clientId);
             ViewBag.projectStatusID = new SelectList(db.ProjectStatus1, "projectStatusID", "projectStatusName", project.projectStatusID);
-            ViewBag.projectId = new SelectList(db.ProjectRoles, "projectRoleId", "projectRoleName", project.projectId);
             return View(project);
         }
 
