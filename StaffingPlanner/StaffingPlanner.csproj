@@ -343,6 +343,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\NewOpportunity\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
