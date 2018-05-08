@@ -13,8 +13,8 @@
 <h2>Report</h2>
 <div class="table-responsive">
 
-    <table class="table table-condensed table-bordered">
-        <tr id="t">
+    <table class="table table-condensed table-bordered small">
+        <tr id="t"> <!-- HEADERS -->
             <th>Details</th>
             <th>Account</th>
             <th>Sub-Business</th>
@@ -22,13 +22,12 @@
             <th># of positions</th>
             <th>Sponsor Name</th>
             <th>Project Value</th>
-            <th>Opportunity Type</th>
             <th>Opportunity Status</th>
             <th>Rate Card/hr</th>
         </tr>
 
         @foreach (var item in Model)
-        {
+        { <!-- For Loop for each row -->
         <tr id="t2">
             <td>
 
@@ -46,7 +45,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body text-info">
+                            <div class="modal-body text-info small">
                                 <table class="table table-bordered table-hover">
                                     <tr class="text-center">
                                         <td>Project Name</td>
@@ -91,6 +90,10 @@
                                         <td>Comment</td>
                                         <td>@item.comment</td>
                                     </tr>
+                                    <tr class="text-center">
+                                        <td>Opportunity Type</td>
+                                        <td></td>
+                                    </tr>
                                 </table>
                             </div>
                             <div class="modal-footer">
@@ -106,7 +109,6 @@
             <td>#</td>          <!-- # of positions-->
             <td>@item.sponsor</td><!--Sponsor Name-->
             <td>To be Filled</td> <!--Project Value-->
-            <td>To be Filled</td> <!--Opportunity Type-->
             <td>@item.ProjectStatus.projectStatusName</td> <!--Opportunity Status-->
             <td>To be Filled</td> <!--Rate Card/hr-->
         </tr>
