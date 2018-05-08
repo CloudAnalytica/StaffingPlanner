@@ -1,9 +1,10 @@
-﻿
+﻿body{
+    background-color: #eee;
+}
 
 #t {
     color: white;
     background-color: #B31A02 !important;
-        
 }
 
 tr:nth-child(even){

@@ -1,39 +1,75 @@
-﻿@model StaffingPlanner.Models.UserInfo
+﻿<style>
+    body {
+        padding-top: 40px;
+        padding-bottom: 40px;  
+    }
+
+    .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+            .form-signin .form-control:focus {
+                z-index: 2;
+            }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+</style>
+
+@model StaffingPlanner.Models.UserInfo
 
 @{
     /**/
 
     ViewBag.Title = "Login";
 }
-
-<h2>Login</h2>
-
+<br />
 <div class="container">
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="form-horizontal">
+
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
             <div class="form-group">
-                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
-                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-                </div>
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @type = "email", @id = "inputEmail", @placeholder = "Email Address" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-                </div>
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "inputPassword", @placeholder = "Password", required = "required" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger"})
             </div>
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Log In" class="btn btn-default" />
-                </div>
+                <button class="btn btn-lg btn-danger " type="submit">Sign in</button>
             </div>
-        </div> <!-- form-horizontal -->
+        </form>
     }
 
 
