@@ -15,8 +15,8 @@ namespace StaffingPlanner.Models
 		[StringLength(50, MinimumLength = 2, ErrorMessage = "Client name must be between 2 and 50 characters in length.")]
 		public string clientName;
 
-		[Display(Name = "Subbusiness")]
-		[StringLength(50, MinimumLength = 0, ErrorMessage = "Subbusiness cannot be more than 50 characters in length.")]
+		[Display(Name = "Sub-Business")]
+		[StringLength(50, MinimumLength = 0, ErrorMessage = "Sub-Business cannot be more than 50 characters in length.")]
 		public string subbusiness;
 
 		[Display(Name = "Active")]

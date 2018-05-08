@@ -32,28 +32,10 @@
 	</div>
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.activeClient, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			<div class="checkbox">
-				@Html.EditorFor(model => model.activeClient)
-				@Html.ValidationMessageFor(model => model.activeClient, "", new { @class = "text-danger" })
-			</div>
-		</div>
-	</div>
-
-	<div class="form-group">
 		@Html.LabelFor(model => model.lastEditedBy, htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
 			@Html.EditorFor(model => model.lastEditedBy, new { htmlAttributes = new { @class = "form-control" } })
 			@Html.ValidationMessageFor(model => model.lastEditedBy, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(model => model.editDate, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.editDate, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.editDate, "", new { @class = "text-danger" })
 		</div>
 	</div>
 
