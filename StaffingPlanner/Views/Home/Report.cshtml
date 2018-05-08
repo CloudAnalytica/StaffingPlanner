@@ -19,6 +19,7 @@
             <th>Account</th>
             <th>Sub-Business</th>
             <th>Project Name</th>
+            <th># of positions</th>
             <th>Sponsor Name</th>
             <th>Project Value</th>
             <th>Opportunity Type</th>
@@ -45,19 +46,52 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body text-primary">
-                                <p>Project Name = @item.projectName</p>
-                                <p>Skill Set Needed = </p>
-                                <p> # of Positions</p>
-                                <p>Practice = </p>
-                                <p>Max Target Grade = </p>
-                                <p>Targeted Consultant = </p>
-                                <p>Work Location = @item.location</p>
-                                <p>Start Date = </p>
-                                <p>Duration = </p>
-                                <p>Priority = </p>
-                                <p>Comment = @item.comment</p>
-
+                            <div class="modal-body text-info">
+                                <table class="table table-bordered table-hover">
+                                    <tr class="text-center">
+                                        <td>Project Name</td>
+                                        <td>@item.projectName</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Skill Set Needed</td>
+                                        <td>#</td>
+                                    <tr class="text-center">
+                                        <td> # of Positions</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Practice</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Max Target Grade</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Targeted Consultant</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Work Location</td>
+                                        <td>@item.location</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Start Date</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Duration</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Priority</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Comment</td>
+                                        <td>@item.comment</td>
+                                    </tr>
+                                </table>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
