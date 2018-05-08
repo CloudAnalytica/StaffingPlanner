@@ -50,6 +50,8 @@ namespace StaffingPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
+				client.activeClient = true;
+				client.editDate = DateTime.Now;
                 db.Clients.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +84,8 @@ namespace StaffingPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
+				client.editDate = DateTime.Now;
+				client.activeClient = true;
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -137,6 +141,7 @@ namespace StaffingPlanner.Controllers
 		{
 			Client client = db.Clients.Find(id);
 			client.activeClient = false;
+			client.editDate = DateTime.Now;
 			db.Entry(client).State = EntityState.Modified;;
 			db.SaveChanges();
 			return RedirectToAction("Index");
