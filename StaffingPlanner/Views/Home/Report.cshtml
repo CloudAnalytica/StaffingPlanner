@@ -1,105 +1,127 @@
-﻿@model IEnumerable<StaffingPlanner.Models.Project>
+﻿
+
+@model IEnumerable<StaffingPlanner.Models.Project>
+
+
+
 
 
 @{
     ViewBag.Title = "Reports";
 }
-<div class="Container">
-    <h2>Report</h2>
 
-    <table class="table table-small table-hover table-striped ">
-        <tr>
+<h2>Report</h2>
+<div class="table-responsive">
+
+    <table class="table table-condensed table-bordered small">
+        <tr id="t"> <!-- HEADERS -->
             <th>Details</th>
             <th>Account</th>
             <th>Sub-Business</th>
             <th>Project Name</th>
+            <th># of positions</th>
+            <th>Sponsor Name</th>
             <th>Project Value</th>
-            <th>Opportunity Type</th>
             <th>Opportunity Status</th>
             <th>Rate Card/hr</th>
-            <th>Skill Set Needed</th>
-            <th>Practice</th>
-            <th>Max Target Grade</th>
-            <th>Targeted Consultant</th>
-            <th>Work Location</th>
-            <th>Start Date</th>
-            <th>Duration</th>
-            <th>Priority</th>
-            <th>Comments</th>
         </tr>
 
-    <tr class="">
-        <td>
-            <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
-                <i class="fas fa-user-plus"></i>
-            </button>
-        </td>
-        <th>GE</th>
-        <th>Power</th>
-        <th>Alstorm</th>
-        <th>Pete Rogers</th>
-        <th>$2.5M</th>
-        <th>Fixed Delivery</th>
-        <th>Sold</th>
-        <th>N/A</th>
-        <th>Solution Architect</th>
-        <th>ACT</th>
-        <th>B</th>
-        <th>TBD</th>
-        <th>US-Remote</th>
-        <th>4/3/2018</th>
-        <th>12 months</th>
-        <th>High</th>
-        <th></th>
-    </tr>
-    <tr class="">
-        <td>
-            <button type='button' class='btn btn-light' data-toggle='modal' data-target='#exampleModal'>
-                <i class="fas fa-user-plus"></i>
-            </button>
-        </td>
-        <th>Kroger</th>
-        <th>Warehouse</th>
-        <th>Project Manager</th>
-        <th>Kevin Dulay</th>
-        <th>$1.2M</th>
-        <th>T&M</th>
-        <th>Pro-Active</th>
-        <th>$100</th>
-        <th>Scrum Master</th>
-        <th>ACT</th>
-        <th>B</th>
-        <th>TBD</th>
-        <th>US-Client Site</th>
-        <th>6/30/2018</th>
-        <th>6 months</th>
-        <th>High</th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        { <!-- For Loop for each row -->
+        <tr id="t2">
+            <td>
 
+                <button type='button' class='btn btn-light' data-toggle='modal' data-target="#@item.projectId">
+                    <i class="fas fa-user-plus fa-xs"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="@item.projectId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title text-center text-uppercase text-danger" id="exampleModalLabel">@item.projectName</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-info small">
+                                <table class="table table-bordered table-hover">
+                                    <tr class="text-center">
+                                        <td>Project Name</td>
+                                        <td>@item.projectName</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Skill Set Needed</td>
+                                        <td>#</td>
+                                    <tr class="text-center">
+                                        <td> # of Positions</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Practice</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Max Target Grade</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Targeted Consultant</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Work Location</td>
+                                        <td>@item.location</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Start Date</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Duration</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Priority</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Comment</td>
+                                        <td>@item.comment</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>Opportunity Type</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>                 <!--Details-->
+            <td>To be Filled</td> <!--Account-->
+            <td>To be Filled</td> <!--Sub-business-->
+            <td>@item.projectName</td> <!--Project Name-->
+            <td>#</td>          <!-- # of positions-->
+            <td>@item.sponsor</td><!--Sponsor Name-->
+            <td>To be Filled</td> <!--Project Value-->
+            <td>@item.ProjectStatus.projectStatusName</td> <!--Opportunity Status-->
+            <td>To be Filled</td> <!--Rate Card/hr-->
+        </tr>
+
+
+
+        }
+        
     </table>
 
 
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+</div> <!-- Table Responsive -->

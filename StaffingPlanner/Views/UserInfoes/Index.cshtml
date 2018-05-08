@@ -3,55 +3,58 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="Container">
+    <h2>Index</h2>
+    <div class="table-responsive">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr id="t">
+                <th>
+                    @Html.DisplayNameFor(model => model.username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.firstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserPrivilege.UserPrivilegeName)
+                </th>
+                <th></th>
+            </tr>
 
-<h2>Index</h2>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserPrivilege.UserPrivilegeName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.userId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.userId })
+                    </td>
+                </tr>
+            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.firstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserPrivilege.UserPrivilegeName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserPrivilege.UserPrivilegeName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.userId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.userId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.userId })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+        </div>
+</div>
